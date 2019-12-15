@@ -1,0 +1,44 @@
+<mat-card class="table-card">
+           
+    <div class="example-container">
+        <h2>Jogada</h2>
+      
+        <div
+          cdkDropList
+          #todoList="cdkDropList"
+          [cdkDropListData]="jogada"
+          [cdkDropListConnectedTo]="[doneList]"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of jogada" cdkDrag>
+              {{item.name}}
+                <svg  width="35" height="35">                
+                    <circle cx="17" cy="17" r="15" stroke="#20272a" stroke-width="1.5" [attr.fill]="item.hexColor" />                
+                </svg> 
+            </div>
+        </div>
+        <mat-card-actions>
+          <button mat-stroked-button (click)="submitRound(jogada)">Submit</button>
+        </mat-card-actions>
+      </div>
+      
+      <div class="example-container">
+        <h2>Cores</h2>
+      
+        <div
+          cdkDropList
+          #doneList="cdkDropList"
+          [cdkDropListData]="colorsGame"
+          [cdkDropListConnectedTo]="[todoList]"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of colorsGame" cdkDrag>
+              {{item.name}}
+                <svg  width="35" height="35">                
+                    <circle cx="17" cy="17" r="15" stroke="#20272a" stroke-width="1.5" [attr.fill]="item.hexColor" />                
+                </svg> 
+            </div>
+        </div>
+      </div>
+            
+</mat-card>

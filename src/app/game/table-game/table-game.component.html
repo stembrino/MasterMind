@@ -1,0 +1,50 @@
+<mat-card class="table-card">
+   <div style="display: flex;">
+        <div>
+            <div *ngFor="let round of game">
+                <div class="ball-group">
+                    <div *ngFor="let ball of round.choice">
+                        <svg  width="35" height="35">                
+                            <circle cx="17" cy="17" r="15" stroke="#20272a" stroke-width="1.5" [attr.fill]="ball.hexColor" />                
+                        </svg> 
+                        
+                    </div>       
+                    
+                </div>
+            </div>
+        </div>
+       
+       
+        <!-- smaill balls -->
+        <div>
+            <div *ngFor="let obj of listScore">
+                <div class="little-ball-group">
+                    <div class="size-div-ball">
+                        <svg  width="35" height="17">                
+                            <circle cx="8" cy="8" r="7" stroke="#20272a" stroke-width="1.5" [attr.fill]="obj.scores[0]" />                
+                        </svg>
+                    </div>
+                    <div class="size-div-ball">
+                        <svg  width="35" height="17">                
+                            <circle cx="8" cy="8" r="7" stroke="#20272a" stroke-width="1.5" [attr.fill]="obj.scores[1]" />                
+                        </svg>
+                    </div>
+                    <div class="size-div-ball">
+                        <svg  width="17" height="17">                
+                            <circle cx="8" cy="8" r="7" stroke="#20272a" stroke-width="1.5" [attr.fill]="obj.scores[2]" />                
+                        </svg>
+                    </div>
+                    <div class="size-div-ball">
+                        <svg  width="17" height="17">                
+                            <circle cx="8" cy="8" r="7" stroke="#20272a" stroke-width="1.5" [attr.fill]="obj.scores[3]" />                
+                        </svg>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+   </div>
+
+
+</mat-card>
