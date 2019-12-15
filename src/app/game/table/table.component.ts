@@ -35,10 +35,14 @@ export class TableComponent implements OnInit {
       
       //quando o anterior for a jogada pode retirar
       if(event.previousContainer.id === 'cdk-drop-list-0'){
-        transferArrayItem(event.previousContainer.data,
-          event.container.data,
-          event.previousIndex,
-          event.currentIndex);
+        console.log(event.previousContainer.data)
+        event.previousContainer.data.splice(event.previousIndex,1)
+        // transferArrayItem(event.previousContainer.data,
+        //   event.container.data,
+        //   event.previousIndex,
+        //   event.currentIndex);
+        //   console.log(event.previousIndex)
+          
       }
 
  

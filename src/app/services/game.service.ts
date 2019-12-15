@@ -9,19 +9,21 @@ export class GameService{
     private challenge:Array<Color> = []
     private colors:Colors = new Colors()
     private contEndGame:number = 0
+    private randomNumbers:Array<number> = []
+    private auxRandomColor:number
 
+//Subjects____
     private score:number[]=[]
     public scoreSubject = new BehaviorSubject(this.score)
-    
     private game:Array<Round> = []
     public gameSubject:BehaviorSubject<any>
 
     constructor(){
-        //gerar o desafio       
-        Colors[this.getRandomInt(0,10)]
-        let colors = this.colors.getColors()
-        for(let i=0;i<4;i++){             
-            this.challenge.push(colors[this.getRandomInt(0,9)])
+        //gerar o desafio  
+        let color = this.colors.getColors()   
+        for(let i=0;i<4;i++){               
+            this.avoidRepeatNumber()
+            this.challenge.push(color[this.auxRandomColor])
         }
 
         for(let i=0;i<10;i++){
@@ -29,6 +31,26 @@ export class GameService{
         }
         this.gameSubject = new BehaviorSubject(this.game)
         console.log(this.challenge)
+    }
+
+    public avoidRepeatNumber():void{       
+         
+        let numberRandom:number =  this.getRandomInt(0,9)
+        //sistema considera o zero como undefined, logo 0 zero é 100 depois converte pra zero
+        if(numberRandom === 0){
+            numberRandom = 100
+        }
+        let existNumber = this.randomNumbers.find( number => number === numberRandom)
+        if(!existNumber){
+           
+            this.randomNumbers.push(numberRandom)
+            if(numberRandom === 100){
+                numberRandom = 0;
+            } 
+            this.auxRandomColor =  numberRandom   
+            return  
+        }
+        this.avoidRepeatNumber()   
     }
 
     public verifyRound(round:Round):void{
