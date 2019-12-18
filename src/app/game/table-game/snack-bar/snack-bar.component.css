@@ -1,0 +1,7 @@
+.box{
+    display: flex;
+}
+.label{
+    color: white;
+    margin-left: 8px;
+}

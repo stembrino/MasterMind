@@ -30,7 +30,7 @@
           #doneList="cdkDropList"
           [cdkDropListData]="colorsGame"
           [cdkDropListConnectedTo]="[todoList]"
-          class="example-list"
+          class="list-collors"
           (cdkDropListDropped)="drop($event)">
             <div class="example-box" *ngFor="let item of colorsGame" cdkDrag>
               {{item.name}}

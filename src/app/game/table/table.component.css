@@ -5,6 +5,15 @@
     text-align: center;
 }
 
+.list-collors{
+  border: solid 1px #ccc;
+  min-height: 435px;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  display: block;
+}
+
 
 /* ________________________ CSS MATERIALIZA ANGULAR____-____-- */
 .example-container {

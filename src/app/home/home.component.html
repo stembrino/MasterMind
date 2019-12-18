@@ -1,43 +1,40 @@
-
-   <div class="background-div">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-5 col-sm-10">
-                    <form [formGroup]="formHome" (ngSubmit)="onSubmitName()" class="form-player">
-                        <mat-card class="card-home">
-                            <mat-card-header>
-                                <mat-card-title>
-                                    Let's Play with the Mind
-                                </mat-card-title>
-                            </mat-card-header>
-                            <mat-card-content>
-                                <mat-form-field class="example-full-width">
-                                <input 
-                                matInput
-                                placeholder="Nickmame or Name"
-                                formControlName="name" >
-                                </mat-form-field>
-                            </mat-card-content>
-                            <mat-card-actions>
-                                <button type="submit" routerLink="/game" mat-stroked-button>Play</button>
-                            </mat-card-actions>
-                        </mat-card>
-                    </form>
-                </div>
+<form [formGroup]="formSettings" (ngSubmit)="startGame()">
+    <mat-card class="card">
+            <mat-card-header>
+                <mat-card-title>
+                    <app-info></app-info>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+            <div class="radiobox-group">
+                    <div class="label-radio">Condição da Combinação de Cores do Desafio</div>
+                    <mat-radio-group (change)="repetitionChange($event.value)" formControlName="repetition">
+                        <mat-radio-button value="1">Sem repetição</mat-radio-button>
+                        <mat-radio-button value="2">Com repeticao</mat-radio-button>
+                    </mat-radio-group>
             </div>
-            <div class="row">
-                <div class="col-md-9 col-sm-10">
-                    <mat-card class="card-home">
-                        <mat-card-header>
-                            <mat-card-title>
-                                How to Play
-                            </mat-card-title>
-                        </mat-card-header>
-                        <mat-card-content>
-                            describe here how to play
-                        </mat-card-content>
-                    </mat-card>
+                <div class="radiobox-group">
+                    <div class="label-radio">Quanatidade de Jogadas</div>
+                    <mat-radio-group (change)="nivelChange($event.value)" formControlName="nivel">
+                        <mat-radio-button value="15">Quinze</mat-radio-button>                        
+                        <mat-radio-button value="10">Dez</mat-radio-button>
+                        <mat-radio-button value="6">Seis</mat-radio-button>
+                    </mat-radio-group>
                 </div>
-            </div>
-        </div>
-   </div>
+            </mat-card-content>
+            
+            <mat-card-actions>
+                <button type="submit" mat-stroked-button>Play!</button>
+                
+            </mat-card-actions>   
+            <mat-card-footer>
+                <div>
+                    <small>Dificuldade: {{ progressBar }}%</small>
+                    <mat-progress-bar mode="determinate" [color]="color" [value]="progressBar"></mat-progress-bar>
+                </div>
+            </mat-card-footer>
+    </mat-card>
+</form>
+<div>
+    <img>
+</div>

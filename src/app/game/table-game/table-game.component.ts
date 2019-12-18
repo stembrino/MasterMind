@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { GameService } from 'src/app/services/game.service';
 import { Round } from 'src/app/models/round.model';
 import { Score } from 'src/app/models/score.model';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { SnackBarComponent } from './snack-bar/snack-bar.component';
 
 @Component({
   selector: 'app-table-game',
@@ -11,9 +13,11 @@ import { Score } from 'src/app/models/score.model';
 export class TableGameComponent implements OnInit {
   public game:Array<Round>
   public listScore:Score[] = []
-  constructor(public gameService:GameService) { 
+  public   durationInSeconds = 4;
+
+  constructor(public gameService:GameService, private _snackBar: MatSnackBar) {  
     
-  }
+   }
 
   ngOnInit() {
     let firstCall:boolean = true
@@ -46,12 +50,14 @@ export class TableGameComponent implements OnInit {
         
 
       })
-   
-      
   }
 
-
- 
-
+  public  openSnackBar() {
+    this._snackBar.openFromComponent(SnackBarComponent, {
+      duration: 4500
+    });
+  }
 
 }
+
+

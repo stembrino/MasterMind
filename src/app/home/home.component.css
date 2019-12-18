@@ -1,10 +1,16 @@
-.card-home{
+
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+.card{
+    margin: 3%;
     margin-top: 5%;
 }
 
-.background-div{
-    width: 100vw;
-    height: 100vh;
-    background-image: url('/assets/images/background.jpg');
-    background-size: cover;
+.radiobox-group{
+  margin-bottom: 20px;
+}
+
+.label-radio{
+  margin: 10px 0;
 }

@@ -18,8 +18,7 @@ export class TableComponent implements OnInit {
   public jogada = []
   private numberOfRound = 0
   public colorsGame = this.colors.getColors()
-  // @Output() messageToEmit = new EventEmitter();
-
+  
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex)
@@ -35,21 +34,17 @@ export class TableComponent implements OnInit {
       
       //quando o anterior for a jogada pode retirar
       if(event.previousContainer.id === 'cdk-drop-list-0'){
-        console.log(event.previousContainer.data)
         event.previousContainer.data.splice(event.previousIndex,1)
-        // transferArrayItem(event.previousContainer.data,
-        //   event.container.data,
-        //   event.previousIndex,
-        //   event.currentIndex);
-        //   console.log(event.previousIndex)
-          
       }
 
- 
     }
   }
 
   ngOnInit() {
+  }
+
+  public cleanPlayPanel():void{
+    
   }
 
 

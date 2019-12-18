@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,12 @@ import {MatButtonModule} from '@angular/material/button';
 import { TableComponent } from './game/table/table.component';
 import { TableGameComponent } from './game/table-game/table-game.component';
 import { GameService } from './services/game.service';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { InfoComponent } from './home/info/info.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { SnackBarComponent } from './game/table-game/snack-bar/snack-bar.component';
 
 
 
@@ -24,7 +30,9 @@ import { GameService } from './services/game.service';
     HomeComponent,
     GameComponent,
     TableComponent,
-    TableGameComponent
+    TableGameComponent,
+    InfoComponent,
+    SnackBarComponent
   ],
   imports: [
     BrowserModule,
@@ -34,9 +42,15 @@ import { GameService } from './services/game.service';
     MatCardModule,
     MatInputModule,
     MatButtonModule,
-    ReactiveFormsModule,    
+    ReactiveFormsModule,  
+    FormsModule, 
+    MatRadioModule,
+    MatProgressBarModule,
+    MatExpansionModule,
+    MatSnackBarModule
   ],
   providers: [GameService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[SnackBarComponent]
 })
 export class AppModule { }

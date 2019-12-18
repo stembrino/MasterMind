@@ -13,9 +13,9 @@ export class Colors{
             new Color('roxo', '#9c27b0'),
             new Color('azul', '#2196f3'),
             new Color('laranja', '#ff9800'),
-            new Color('preto', '#0c0c0c'),
+            new Color('lilas', '#de89ec'),
             new Color('cinza', '#9e9e9e'),
-            new Color('rosa', '#e91e63'),
+            new Color('rosa', '#ec145e'),
             new Color('marrom', '#795548')
         )        
     }
