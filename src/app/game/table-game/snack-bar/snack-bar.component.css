@@ -5,3 +5,13 @@
     color: white;
     margin-left: 8px;
 }
+
+.ball-group{
+    display: flex;
+    flex-wrap: wrap;
+    margin:5px;
+    margin-bottom: 5.1px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}

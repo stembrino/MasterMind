@@ -47,8 +47,14 @@
    </div>
 
     <mat-card-footer style="width: 100%;">
-        <button mat-stroked-button (click)="openSnackBar()" aria-label="Show an example snack-bar">
+        <button mat-stroked-button (click)="openSnackBar('instrucao')" aria-label="Show an example snack-bar">
         Instruções
         </button>
+        <span *ngIf="gameOver">
+            <button mat-stroked-button (click)="openSnackBar('desafio')" aria-label="Show an example snack-bar">
+                Ver Desafio
+            </button>
+        </span>
+        
     </mat-card-footer>
 </mat-card>

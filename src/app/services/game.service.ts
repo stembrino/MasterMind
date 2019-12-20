@@ -13,13 +13,14 @@ export class GameService{
     private randomNumbers:Array<number> = []
     private auxRandomColor:number
     public token:string
+    private numberOfROundToEnd:number
 
 //Subjects____
     private score:number[]=[]
     public scoreSubject = new BehaviorSubject(this.score)
     private game:Array<Round> = []
     public gameSubject:BehaviorSubject<any>
-    private numberOfROundToEnd:number
+    public actionEndGame:BehaviorSubject<boolean> = new BehaviorSubject(false)
 
     constructor(private router:Router){
 
@@ -47,11 +48,10 @@ export class GameService{
         this.avoidRepeatNumber()   
     }
 
-    public verifyRound(round:Round):void{
+    private verifyRound(round:Round):void{
         this.score = []
         this.contEndGame++;
         let have2Points = false
-        debugger
         
         for(let i=0;i<round.choice.length;i++){
             have2Points = false
@@ -61,9 +61,7 @@ export class GameService{
                    have2Points = true
                     break
                 }
-                // if(this.challenge[j].hexColor === round.choice[i].hexColor){
-                //     this.score[i] = 1
-                // }
+            
             }
             //caso nao tenha nenhuma opcao com cor e posicao corretas:
             //verifica a cor
@@ -91,7 +89,7 @@ export class GameService{
         this.scoreSubject.next(this.score)
     }
 
-    public mixScore(rec = 0):void{
+    private mixScore(rec = 0):void{
         rec++
         let number:number = this.getRandomInt(0,2)
         
@@ -125,16 +123,20 @@ export class GameService{
         return true        
     }
     private verifyGame(){
+        console.log(this.numberOfROundToEnd)
+        console.log(this.contEndGame)
+
         if(this.verifyVictory() && this.contEndGame <=this.numberOfROundToEnd){
             //End Game with victory
             console.log('ganhou o jogo')
-        }else if(this.contEndGame === 10){
+        }else if(this.contEndGame == this.numberOfROundToEnd){
             //lost game
             console.log('perdeu o jogo')
+            this.actionEndGame.next(true)
         }
     }
 
-    public generateChalengeOption(opc:string):void{
+    private generateChalengeOption(opc:string):void{
         let color = this.colors.getColors()   
         if(opc === '1'){
             for(let i=0;i<4;i++){               
@@ -149,6 +151,10 @@ export class GameService{
         console.log(this.challenge)
 
         
+    }
+
+    public getChallenge():Array<Color>{
+        return this.challenge
     }
     //vai gerar o desafio quando o setUps estiver pronto
     public generateChallenge(configGame):void{

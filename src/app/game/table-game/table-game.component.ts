@@ -14,6 +14,7 @@ export class TableGameComponent implements OnInit {
   public game:Array<Round>
   public listScore:Score[] = []
   public   durationInSeconds = 4;
+  public gameOver:boolean = false
 
   constructor(public gameService:GameService, private _snackBar: MatSnackBar) {  
     
@@ -45,16 +46,24 @@ export class TableGameComponent implements OnInit {
         if(!firstCall){
           this.listScore.push(new Score(colorBalls))
         }
-        firstCall=false
-          
+        firstCall=false    
         
 
       })
+
+      this.endGame()
   }
 
-  public  openSnackBar() {
+  public endGame():void{
+    this.gameService.actionEndGame
+      .subscribe((response:any)=>{
+       this.gameOver = response
+      })
+  }
+
+  public  openSnackBar(data):void {
     this._snackBar.openFromComponent(SnackBarComponent, {
-      duration: 4500
+      duration: 4500, data: data
     });
   }
 

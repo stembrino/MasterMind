@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="information === 'instrucao';else showchallenge ">
     <div class="little-ball-group">
         <div class="box">
             <div class="size-div-ball">
@@ -35,3 +35,15 @@
         </div>
     </div>
 </div>
+
+<ng-template #showchallenge>
+    <div class="ball-group">
+        <div *ngFor="let ball of ballsChallenge">
+            <svg  width="35" height="35">                
+                <circle cx="17" cy="17" r="15" stroke="#20272a" stroke-width="1.5" [attr.fill]="ball.hexColor" />                
+            </svg> 
+            
+        </div>       
+        
+    </div>
+</ng-template>
