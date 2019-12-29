@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TEXTINFO } from 'src/app/share/text-info'
+import { TEXTINFO } from 'src/share/text-info'
 @Component({
   selector: 'app-info',
   templateUrl: './info.component.html',

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { GameService } from '../services/game.service';
+import { GameService } from 'src/services/game.service';
+import { AuthGuardService } from 'src/services/guards/auth-guard';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,7 @@ export class HomeComponent implements OnInit {
  public progressBar:number = 10
   private repetitionActivated:boolean = false
   public color ="accent"
-  constructor(private gameService:GameService) { }
+  constructor(private gameService:GameService, private authService: AuthGuardService) { }
 
   ngOnInit() {
   }
@@ -49,7 +50,9 @@ export class HomeComponent implements OnInit {
   }
 
   public startGame():void{
-    // console.log(this.formSettings.value) 
+    //release the game in route guard
+    this.authService.toAbleStartGame()
+    
     this.gameService.setUpSettings(this.formSettings.value)
   }
 

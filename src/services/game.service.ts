@@ -31,24 +31,16 @@ export class GameService{
     private avoidRepeatNumber():void{       
          
         let numberRandom:number =  this.getRandomInt(0,9)
-        //sistema considera o zero como undefined, logo 0 zero é 100 depois converte pra zero
-        if(numberRandom === 0){
-            numberRandom = 100
-        }
-        let existNumber = this.randomNumbers.find( number => number === numberRandom)
-        if(!existNumber){
-           
-            this.randomNumbers.push(numberRandom)
-            if(numberRandom === 100){
-                numberRandom = 0;
-            } 
+       
+        if(!this.randomNumbers.includes(numberRandom)){            
+            this.randomNumbers.push(numberRandom)            
             this.auxRandomColor =  numberRandom   
             return  
         }
         this.avoidRepeatNumber()   
     }
 
-    private verifyRound(round:Round):void{
+    public verifyRound(round:Round):void{
         this.score = []
         this.contEndGame++;
         let have2Points = false
@@ -122,16 +114,14 @@ export class GameService{
 
         return true        
     }
+
     private verifyGame(){
-        console.log(this.numberOfROundToEnd)
-        console.log(this.contEndGame)
 
         if(this.verifyVictory() && this.contEndGame <=this.numberOfROundToEnd){
             //End Game with victory
-            console.log('ganhou o jogo')
+           // console.log('ganhou o jogo')
         }else if(this.contEndGame == this.numberOfROundToEnd){
             //lost game
-            console.log('perdeu o jogo')
             this.actionEndGame.next(true)
         }
     }
@@ -148,7 +138,7 @@ export class GameService{
                 this.challenge.push(color[this.getRandomInt(0,9)])
             }
         }
-        console.log(this.challenge)
+        //console.log(this.challenge)
 
         
     }
@@ -158,7 +148,6 @@ export class GameService{
     }
     //vai gerar o desafio quando o setUps estiver pronto
     public generateChallenge(configGame):void{
-        this.generateToken()
         this.generateChalengeOption(configGame.repetition)//gera o desafio
            
 
@@ -178,11 +167,6 @@ export class GameService{
 
 
 
-   public generateToken(){
-    const rand=()=>Math.random().toString(36).substr(2);
-    const token=(length)=>(rand()+rand()+rand()+rand()).substr(0,length);
-    this.token = token(10)
-   }
    
 
 

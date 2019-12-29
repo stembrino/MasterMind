@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { GameService } from 'src/app/services/game.service';
+import { GameService } from 'src/services/game.service';
 import {MAT_SNACK_BAR_DATA} from '@angular/material/snack-bar';
-import { Color } from 'src/app/models/color.model';
+import { Color } from 'src/models/color.model';
 
 
 
@@ -12,13 +12,14 @@ import { Color } from 'src/app/models/color.model';
 })
 export class SnackBarComponent implements OnInit {
   public ballsChallenge:Array<Color>
-  public information:boolean
   constructor(private gameService:GameService, @Inject(MAT_SNACK_BAR_DATA) public data: any) { }
 
   ngOnInit() {
-    this.information = this.data
+    this.updateData()
+  }
+  private updateData():void{
+    
     this.ballsChallenge =  this.gameService.getChallenge()
-    console.log(this.ballsChallenge)
   }
 
 }

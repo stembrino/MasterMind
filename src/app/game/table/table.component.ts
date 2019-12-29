@@ -1,9 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem, copyArrayItem } from '@angular/cdk/drag-drop';
-import { Colors } from 'src/app/share/colors.model'
-import { GameService } from 'src/app/services/game.service';
-import { Round } from 'src/app/models/round.model';
-import { Color } from 'src/app/models/color.model';
+import { Colors } from 'src/share/colors.model'
+import { GameService } from 'src/services/game.service';
+import { Round } from 'src/models/round.model';
+import { Color } from 'src/models/color.model';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',

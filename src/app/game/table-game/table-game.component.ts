@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { GameService } from 'src/app/services/game.service';
-import { Round } from 'src/app/models/round.model';
-import { Score } from 'src/app/models/score.model';
+import { GameService } from 'src/services/game.service';
+import { Round } from 'src/models/round.model';
+import { Score } from 'src/models/score.model';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
 
