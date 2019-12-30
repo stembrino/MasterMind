@@ -3,9 +3,11 @@ const TEXTINFO:string = `
     cada uma dessas cores ocupando uma posição diferente. Essas cores podem ser repetidas ou não, com cores repetidas a dificuldade é mais elevada.
     O objetivo do jogo é acertar essa combinação de cores nas posções corretas. 
     A cada jogada, o desafiador (computador) devolve um "feedback" que é composto por quatro bolinhas.
-    A de cor preta representa que a e cor estão corretas.
+    A de cor preta representa que a posição e cor estão corretas.
     A de cor branca representa que a cor está correta mas na posição errada.
     A de cor beje, nem cor e nem posicao estão corretas.
+    Atenção que estas bolas alternam a posição de forma aleatória, não sendo possível saber qual bola(resposta)
+    representa a bola(jogada)
 `
 
 export { TEXTINFO }
