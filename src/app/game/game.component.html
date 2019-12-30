@@ -1,11 +1,15 @@
 <div class="container-sm">
-    <div class="row">
-        <div class="col-xl-3 ">
-            <app-table-game></app-table-game>           
-        </div>
-        <div class="col-xl-9 ">
-            <app-table></app-table>          
-        </div>
-    </div>
-    
+    <div *ngIf="!showVictoryWindow; else victoryWindow">
+        <div class="row">
+            <div class="col-xl-3 ">
+                <app-table-game></app-table-game>           
+            </div>
+            <div class="col-xl-9 ">
+                <app-table></app-table>          
+            </div>
+        </div>        
+    </div>      
 </div>
+<ng-template #victoryWindow>
+    <app-end-game></app-end-game>
+</ng-template>  

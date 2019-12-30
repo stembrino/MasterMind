@@ -21,6 +21,10 @@ export class GameService{
     private game:Array<Round> = []
     public gameSubject:BehaviorSubject<any>
     public actionEndGame:BehaviorSubject<boolean> = new BehaviorSubject(false)
+    //TESTE RETORNAR A FALSO DEPOIS
+    public actionVictoryGame:BehaviorSubject<boolean> = new BehaviorSubject(true)
+
+    
 
     constructor(private router:Router){
 
@@ -116,10 +120,9 @@ export class GameService{
     }
 
     private verifyGame(){
-
         if(this.verifyVictory() && this.contEndGame <=this.numberOfROundToEnd){
             //End Game with victory
-           // console.log('ganhou o jogo')
+            this.actionVictoryGame.next(true)
         }else if(this.contEndGame == this.numberOfROundToEnd){
             //lost game
             this.actionEndGame.next(true)
@@ -138,7 +141,7 @@ export class GameService{
                 this.challenge.push(color[this.getRandomInt(0,9)])
             }
         }
-        //console.log(this.challenge)
+        console.log(this.challenge)
 
         
     }
