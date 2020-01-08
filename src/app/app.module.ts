@@ -7,6 +7,11 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuardService } from '../services/guards/auth-guard'
 import { GameService } from '../services/game.service';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment'
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { FirebaseService } from 'src/services/firebase/firebase.service'
+
 
 //components
 import { HomeComponent } from './home/home.component';
@@ -26,7 +31,12 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { EndGameComponent } from './game/end-game/end-game.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ModalVictoryComponent } from './game/end-game/modal-victory/modal-victory.component';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -38,7 +48,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     TableComponent,
     TableGameComponent,
     InfoComponent,
-    SnackBarComponent
+    SnackBarComponent,
+    EndGameComponent,
+    ModalVictoryComponent
   ],
   imports: [
     BrowserModule,
@@ -53,10 +65,16 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatRadioModule,
     MatProgressBarModule,
     MatExpansionModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    MatListModule, 
+    MatIconModule,
+    MatProgressSpinnerModule,
   ],
-  providers: [GameService, AuthGuardService],
+  providers: [GameService, AuthGuardService, FirebaseService],
   bootstrap: [AppComponent],
-  entryComponents:[SnackBarComponent]
+  entryComponents:[SnackBarComponent, ModalVictoryComponent]
 })
 export class AppModule { }

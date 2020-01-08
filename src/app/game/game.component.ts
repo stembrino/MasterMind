@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { GameService } from 'src/services/game.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -8,16 +7,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
-
-  constructor(private gameService: GameService, private router: Router) { 
-    if(!this.gameService.token){
-      // window.location.href= '/home'
-    }
+  public showVictoryWindow=false
+  constructor(private gameService: GameService) { 
+    
   }
   
 
   ngOnInit() {
-
+    this.gameService.actionVictoryGame
+      .subscribe(response=> this.showVictoryWindow = response)
+    
   }
 
 }

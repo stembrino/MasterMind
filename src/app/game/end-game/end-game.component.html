@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <mat-card *ngIf="rankingList.length !== 0;else load">
+            <mat-list>
+                <div class="header-title">Ranking</div>
+                <mat-list-item *ngFor="let player of rankingList">
+                    <mat-icon>star_border</mat-icon>
+                    <p class="label-ranking">Jogador: {{player.name}}</p>
+                    <p>Score: {{player.score}}</p>
+                </mat-list-item>
+            </mat-list>  
+        </mat-card> 
+        <ng-template #load>
+            <div class="load">
+                <mat-progress-spinner 
+                    mode="indeterminate"
+                    color="warn"
+                    diameter=60></mat-progress-spinner>
+            </div>
+        </ng-template>
+    </div>
+</div>

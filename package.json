@@ -16,6 +16,7 @@
     "@angular/common": "~8.2.13",
     "@angular/compiler": "~8.2.13",
     "@angular/core": "~8.2.13",
+    "@angular/fire": "^5.2.3",
     "@angular/forms": "~8.2.13",
     "@angular/material": "^8.2.3",
     "@angular/platform-browser": "~8.2.13",
@@ -23,13 +24,14 @@
     "@angular/router": "~8.2.13",
     "@ng-bootstrap/ng-bootstrap": "^5.1.4",
     "bootstrap": "^4.4.1",
+    "firebase": "^7.6.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.803.21",
-    "@angular/cli": "~8.3.17",
+    "@angular/cli": "^8.3.21",
     "@angular/compiler-cli": "~8.2.13",
     "@angular/language-service": "~8.2.13",
     "@types/jasmine": "~3.3.8",

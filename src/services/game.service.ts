@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Round } from '../models/round.model';
 import { Color } from '../models/color.model';
-import { BehaviorSubject, empty } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Colors } from '../share/colors.model';
 import { Router } from '@angular/router';
 
@@ -14,6 +14,7 @@ export class GameService{
     private auxRandomColor:number
     public token:string
     private numberOfROundToEnd:number
+    public nivel:number
 
 //Subjects____
     private score:number[]=[]
@@ -21,6 +22,9 @@ export class GameService{
     private game:Array<Round> = []
     public gameSubject:BehaviorSubject<any>
     public actionEndGame:BehaviorSubject<boolean> = new BehaviorSubject(false)
+    public actionVictoryGame:BehaviorSubject<boolean> = new BehaviorSubject(false)
+
+    
 
     constructor(private router:Router){
 
@@ -116,10 +120,11 @@ export class GameService{
     }
 
     private verifyGame(){
-
         if(this.verifyVictory() && this.contEndGame <=this.numberOfROundToEnd){
             //End Game with victory
-           // console.log('ganhou o jogo')
+            setTimeout(()=>{
+                this.actionVictoryGame.next(true)
+            },2000)
         }else if(this.contEndGame == this.numberOfROundToEnd){
             //lost game
             this.actionEndGame.next(true)
@@ -138,7 +143,6 @@ export class GameService{
                 this.challenge.push(color[this.getRandomInt(0,9)])
             }
         }
-        //console.log(this.challenge)
 
         
     }
@@ -164,6 +168,14 @@ export class GameService{
         this.router.navigate(['/game'])
 
     }
+
+    public getScorePlayer(){
+        //algorithm
+        //the weight og the number ended game is 7 and the level is 3
+        return (((this.numberOfROundToEnd-this.contEndGame) * 7) + (this.nivel/10 * 3))
+    }
+
+
 
 
 

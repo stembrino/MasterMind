@@ -1,0 +1,22 @@
+.labels{
+    cursor: default;
+}
+
+.btn-submit{
+    all: unset;
+    box-shadow: 0 0 2px 1.5px #dc4c7d;
+    height: 1.6em;
+    width: 5em;
+    text-align: center;
+    font-weight: 500;
+    color: #dc4c7d;
+    cursor: pointer;
+}
+.btn-submit:hover{
+    box-shadow: 0 0 2px 2px #dc4c7d;
+
+}
+.title{
+    cursor: default;
+    font-size: 20px;
+}
