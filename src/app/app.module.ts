@@ -10,6 +10,7 @@ import { GameService } from '../services/game.service';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment'
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { FirebaseService } from 'src/services/firebase/firebase.service'
 
 
 //components
@@ -33,7 +34,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { EndGameComponent } from './game/end-game/end-game.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ModalVictoryComponent } from './game/end-game/modal-victory/modal-victory.component';
-
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -65,9 +68,12 @@ import { ModalVictoryComponent } from './game/end-game/modal-victory/modal-victo
     MatSnackBarModule,
     MatDialogModule,
     AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(environment.firebase), 
+    AngularFireModule.initializeApp(environment.firebase),
+    MatListModule, 
+    MatIconModule,
+    MatProgressSpinnerModule,
   ],
-  providers: [GameService, AuthGuardService],
+  providers: [GameService, AuthGuardService, FirebaseService],
   bootstrap: [AppComponent],
   entryComponents:[SnackBarComponent, ModalVictoryComponent]
 })

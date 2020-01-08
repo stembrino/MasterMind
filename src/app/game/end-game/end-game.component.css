@@ -1,0 +1,20 @@
+.header-title{
+    font-size: 20;
+}
+.row{
+    display: flex;
+    justify-content: center;
+}
+
+.load{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vh;
+    height: 100vh;
+}
+
+.label-ranking{
+    margin-right: 10px;
+    text-transform: capitalize;
+}

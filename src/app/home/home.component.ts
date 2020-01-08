@@ -50,6 +50,7 @@ export class HomeComponent implements OnInit {
   }
 
   public startGame():void{
+    this.gameService.nivel = this.progressBar
     //release the game in route guard
     this.authService.toAbleStartGame()
     
